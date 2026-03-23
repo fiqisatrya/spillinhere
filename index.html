@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spill Fashion In Here - Affiliate Fashion</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        /* Header Utama */
+        .header-main {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 40px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo-text {
+            font-size: 32px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo-subtitle {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        /* Navigation */
+        .nav-menu {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #764ba2;
+        }
+
+        /* Container Utama */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 40px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .hero-title {
+            font-size: 48px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .hero-description {
+            font-size: 18px;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Grid Fashion Items */
+        .fashion-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        /* Base Class untuk semua fashion item */
+        .fashion-item {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .fashion-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        /* Class untuk item ke-1 sampai 15 dengan gaya berbeda */
+        .item-1 { border-top: 4px solid #FF6B6B; }
+        .item-2 { border-top: 4px solid #4ECDC4; }
+        .item-3 { border-top: 4px solid #45B7D1; }
+        .item-4 { border-top: 4px solid #96CEB4; }
+        .item-5 { border-top: 4px solid #FFEAA7; }
+        .item-6 { border-top: 4px solid #DDA0DD; }
+        .item-7 { border-top: 4px solid #98D8C8; }
+        .item-8 { border-top: 4px solid #F7B05E; }
+        .item-9 { border-top: 4px solid #E86A6A; }
+        .item-10 { border-top: 4px solid #6C91B2; }
+        .item-11 { border-top: 4px solid #FFB347; }
+        .item-12 { border-top: 4px solid #A8E6CF; }
+        .item-13 { border-top: 4px solid #FF8B94; }
+        .item-14 { border-top: 4px solid #AA96DA; }
+        .item-15 { border-top: 4px solid #FCBAD3; }
+
+        .item-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .item-content {
+            padding: 20px;
+        }
+
+        .item-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .item-price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #764ba2;
+            margin-bottom: 10px;
+        }
+
+        .item-desc {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .affiliate-badge {
+            display: inline-block;
+            background: #ff6b6b;
+            color: white;
+            font-size: 12px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-top: 10px;
+        }
+
+        /* Footer */
+        .footer-main {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            .logo-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-title {
+                font-size: 32px;
+            }
+            
+            .fashion-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Utama -->
+    <div class="header-main">
+        <div class="logo-container">
+            <div>
+                <div class="logo-text">✨ SPILL FASHION IN HERE ✨</div>
+                <div class="logo-subtitle">shop now with your best fashion!</div>
+            </div>
+            <div class="nav-menu">
+                <a href="#" class="nav-link">Home</a>
+                <a href="#" class="nav-link">New Arrivals</a>
+                <a href="#" class="nav-link">Best Sellers</a>
+                <a href="#" class="nav-link">Sale</a>
+                <a href="#" class="nav-link">Contact</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <h1 class="hero-title">Spill The Latest Fashion Trends! 👗✨</h1>
+            <p class="hero-description">Discover curated fashion items with exclusive affiliate links. Shop now and get the best deals on trendy outfits!</p>
+        </div>
+
+        <!-- Grid dengan 15 Fashion Item Affiliate -->
+        <div class="fashion-grid">
+            <!-- Item 1 - Women's Dress -->
+            <a href="https://vt.tokopedia.com/t/ZS9RCcvFCqd4a-g01c0/" class="fashion-item item-1" target="_blank" rel="noopener noreferrer">
+                <img src="https://via.placeholder.com/400x250/FF6B6B/FFFFFF?text=Floral+Maxi+Dress" alt="Floral Maxi Dress" class="item-image">
+                <div class="item-content">
+                    <div class="item-title">Screamous Kaos T-Shirt REGULAR DANBOWL</div>
+                    <div class="item-price">Rp 118.000</div>
+                    <div class="item-desc">Regular 290 GSM tee with advanced CoolBreeze™ and ThermaFlow™ </div>
+                    <span class="affiliate-badge">Link →</span>
+                </div>
+            </a>
+
+            <!-- Item 2 - Denim Jacket -->
+            <a href="https://vt.tokopedia.com/t/ZS9RCcTLBdFRA-lP3po/" class="fashion-item item-2" target="_blank" rel="noopener noreferrer">
+                <img src="https://via.placeholder.com/400x250/4ECDC4/FFFFFF?text=Denim+Jacket" alt="Denim Jacket" class="item-image">
+                <div class="item-content">
+                    <div class="item-title">Kemeja Boxi Crop prem</div>
+                    <div class="item-price">Rp 150.000</div>
+                    <div class="item-desc">Timeless boxi for everyday style</div>
+                    <span class="affiliate-badge">Link →</span>
+                </div>
+            </a>
+
+            <!-- Item 3 - Sneakers -->
+            <a href="https://www.zalora.co.id/affiliate-link-3" class="fashion-item item-3" target="_blank" rel="noopener noreferrer">
+                <img src="https://via.placeholder.com/400x250/45B7D1/FFFFFF?text=White+Sneakers" alt="White Sneakers" class="item-image">
+                <div class="item-content">
+                    <div class="item-title">👟 Premium White Sneakers</div>
+                    <div class="item-price">Rp 650.000</div>
+                    <div class="item-desc">Comfortable and stylish sneakers for daily wear</div>
+                    <span class="affiliate-badge">Link →</span>
+                </div>
+            </a>
+
+            <!-- Item 4 - Leather Bag -->
+            <a href="https://vt.tokopedia.com/t/ZS9RCcKXYuCjQ-VymKW/" class="fashion-item item-4" target="_blank" rel="noopener noreferrer">
+                <img src="https://via.placeholder.com/400x250/96CEB4/FFFFFF?text=Leather+Tote+Bag" alt="Leather Tote Bag" class="item-image">
+                <div class="item-content">
+                    <div class="item-title">Boxy T-Shirt | Steel</div>
+                    <div class="item-price">Rp 99.000</div>
+                    <div class="item-desc">No Void Minds FORMLOCK</div>
+                    <span class="affiliate-badge">Link →</span>
+                </div>
+            </a>
+
+            <!-- Item 5 - Sunglasses -->
+            <a href="https://www.tokopedia.com/affiliate-link-5" class="fashion-item item-5" target="_blank" rel="noopener noreferrer">
+                <img src="https://via.placeholder.com/400x250/FFEAA7/333333?text=Aviator+Sunglasses" alt="Aviator Sunglasses" class="item-image">
+                <div class="item-content">
+                    <div class="item-title">Celana panjang pria jeans standart basic reguler pria korean style Fit Hitam Dewasa Slim Slimfit Denim Cowok Skinny Biru Navy</div>
+                    <div class="item-price">Rp 199.000</div>
+                    <div class="item-desc">Celana denim unisex baggy jeans Pants</div>
+                    <span class="affiliate-badge">Link →</span>
+                </div>
+            </a>
+
+            <!-- Item 6 - Hoodie -->
+            <a href="https://vt.tokopedia.com/t/ZS9RCTSvBQYu9-abUU8/" class="fashion-item item-6" target="_blank" rel="noopener noreferrer">
+                <img src="https://via.placeholder.com/400x250/DDA0DD/FFFFFF?text=Oversized+Hoodie" alt="Oversized Hoodie" class="item-image">
+                <div class="item-content">
+                    <div class="item-title"> Kemeja Lengan Panjang Pria Oversized Kasual Kerja Atasan Casual </div>
+                    <div class="item-price">Rp 140.000</div>
+                    <div class="item-desc">Cozy and trendy oversized</div>
+                    <span class="affiliate-badge">Link →</span>
+                </div>
+            </a>
+
+            <!-- Item 7 - Watch -->
+            <a href="https://vt.tokopedia.com/t/ZS9RCTTEBQXJQ-EJxCI/" class="fashion-item item-7" target="_blank" rel="noopener noreferrer">
+                <img src="https://via.placeholder.com/400x250/98D8C8/FFFFFF?text=Fashion+Watch" alt="Fashion Watch" class="item-image">
+                <div class="item-content">
+                    <div class="item-title">Celana Jeans Unisex Celana Baggy Jeans</div>
+                    <div class="item-price">Rp 168.000</div>
+                    <div class="item-desc"> Denim Pangjang Dari Kaki Yang Ramping Pants N021</div>
+                    <span class="affiliate-badge">Link →</span>
+                </div>
+            </a>
+
+            <!-- Item 8 - Skirt -->
+            <a href="https://vt.tokopedia.com/t/ZS9RX19bxPw6T-yKSbC/" class="fashion-item item-8" target="_blank" rel="noopener noreferrer">
+                <img src="https://via.placeholder.com/400x250/F7B05E/FFFFFF?text=Pleated+Skirt" alt="Pleated Skirt" class="item-image">
+                <div class="item-content">
+                    <div class="item-title">Sepatu Boots Pria Kekinian Sepatu Cowok Terbaru Sepatu Jalan Trendy</div>
+                    <div class="item-price">Rp 140.000</div>
+                    <div class="item-desc">Boots shoes trend best style</div>
+                    <span class="affiliate-badge">Affiliate Link →</span>
+                </div>
+            </a>
+
+            <!-- Item 9 - Blazer -->
+            <a href="https://vt.tokopedia.com/t/ZS9RX1s1bgrYN-JfveW/" class="fashion-item item-9" target="_blank" rel="noopener noreferrer">
+                <img src="https://via.placeholder.com/400x250/E86A6A/FFFFFF?text=Blazer" alt="Blazer" class="item-image">
+                <div class="item-content">
+                    <div class="item-title">Jogger Loose Pants Baggy Sweatpants Hightwaist</div>
+                    <div class="item-price">Rp 55.000</div>
+                    <div class="item-desc">Korean Style Celana Pria Dan Wanita Sport Casual</div>
+                    <span class="affiliate-badge">Link →</span>
+                </div>
+            </a>
+
+            <!-- Item 10 - Scarf -->
+            <a href="https://vt.tokopedia.com/t/ZS9RV36FX8qF5-bUSOP/" class="fashion-item item-10" target="_blank" rel="noopener noreferrer">
+                <img src="https://via.placeholder.com/400x250/6C91B2/FFFFFF?text=Silk+Scarf" alt="Silk Scarf" class="item-image">
+                <div class="item-content">
+                    <div class="item-title">Rockmaker Celana Denim Regular Loose Light</div>
+                    <div class="item-price">Rp 1.000</div>
+                    <div class="item-desc">Grey Fit Jeans Lembut Nyaman</div>
+                    <span class="affiliate-badge">Link →</span>
+                </div>
+            </a>
+
+            <!-- Item 11 - Jeans -->
+            <a href="https://s.shopee.co.id/3fzAZjLx9U" class="fashion-item item-11" target="_blank" rel="noopener noreferrer">
+                <img src="https://via.placeholder.com/400x250/FFB347/FFFFFF?text=Skinny+Jeans" alt="Skinny Jeans" class="item-image">
+                <div class="item-content">
+                    <div class="item-title">👖 High-Waist Skinny Jeans</div>
+                    <div class="item-price">Rp 399.000</div>
+                    <div class="item-desc">Comfortable stretch denim jeans</div>
+                    <span class="affiliate-badge">Affiliate Link →</span>
+                </div>
+            </a>
+
+            <!-- Item 12 - Kimono -->
+            <a href="https://www.zalora.co.id/affiliate-link-12" class="fashion-item item-12" target="_blank" rel="noopener noreferrer">
+                <img src="https://via.placeholder.com/400x250/A8E6CF/333333?text=Boho+Kimono" alt="Boho Kimono" class="item-image">
+                <div class="item-content">
+                    <div class="item-title">🌸 Floral Kimono</div>
+                    <div class="item-price">Rp 225.000</div>
+                    <div class="item-desc">Lightweight boho style kimono</div>
+                    <span class="affiliate-badge">Affiliate Link →</span>
+                </div>
+            </a>
+
+            <!-- Item 13 - Heels -->
+            <a href="https://shopee.co.id/affiliate-link-13" class="fashion-item item-13" target="_blank" rel="noopener noreferrer">
+                <img src="https://via.placeholder.com/400x250/FF8B94/FFFFFF?text=Stiletto+Heels" alt="Stiletto Heels" class="item-image">
+                <div class="item-content">
+                    <div class="item-title">👠 Stiletto Heels</div>
+                    <div class="item-price">Rp 499.000</div>
+                    <div class="item-desc">Elegant heels for special occasions</div>
+                    <span class="affiliate-badge">Affiliate Link →</span>
+                </div>
+            </a>
+
+            <!-- Item 14 - Backpack -->
+            <a href="https://www.tokopedia.com/affiliate-link-14" class="fashion-item item-14" target="_blank" rel="noopener noreferrer">
+                <img src="https://via.placeholder.com/400x250/AA96DA/FFFFFF?text=Fashion+Backpack" alt="Fashion Backpack" class="item-image">
+                <div class="item-content">
+                    <div class="item-title">🎒 Fashion Backpack</div>
+                    <div class="item-price">Rp 425.000</div>
+                    <div class="item-desc">Stylish backpack for daily use</div>
+                    <span class="affiliate-badge">Affiliate Link →</span>
+                </div>
+            </a>
+
+            <!-- Item 15 - Sweater -->
+            <a href="https://www.zalora.co.id/affiliate-link-15" class="fashion-item item-15" target="_blank" rel="noopener noreferrer">
+                <img src="https://via.placeholder.com/400x250/FCBAD3/333333?text=Cable+Knit+Sweater" alt="Cable Knit Sweater" class="item-image">
+                <div class="item-content">
+                    <div class="item-title">🧥 Cable Knit Sweater</div>
+                    <div class="item-price">Rp 380.000</div>
+                    <div class="item-desc">Warm and stylish winter sweater</div>
+                    <span class="affiliate-badge">Affiliate Link →</span>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer-main">
+        <p>✨ Spill Fashion In Here - Your Trusted Fashion Affiliate Partner ✨</p>
+        <p style="margin-top: 10px; font-size: 12px;">© 2024 All Rights Reserved | Affiliate Disclosure: We may earn commission from purchases</p>
+    </div>
+</body>
+</html>
